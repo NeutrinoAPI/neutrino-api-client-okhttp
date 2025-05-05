@@ -33,6 +33,9 @@ public class NeutrinoAPIClient {
     public static final String AWS_ENDPOINT = "https://aws.neutrinoapi.net/";
     public static final String GCP_ENDPOINT = "https://gcp.neutrinoapi.net/";
     public static final String BACKUP_ENDPOINT = "https://neutrinoapi.com/";
+    public static final String EU_GEOFENCE_ENDPOINT = "https://eu.neutrinoapi.net/";
+    public static final String AU_GEOFENCE_ENDPOINT = "https://aus.neutrinoapi.net/";
+    public static final String US_GEOFENCE_ENDPOINT = "https://usa.neutrinoapi.net/";
 
     private static final long CONNECT_TIMEOUT_MS = TimeUnit.SECONDS.toMillis(10);
 
@@ -149,6 +152,7 @@ public class NeutrinoAPIClient {
      * <li>"from-value" - The value to convert from (e.g. 10.95)</li>
      * <li>"from-type" - The type of the value to convert from (e.g. USD)</li>
      * <li>"to-type" - The type to convert to (e.g. EUR)</li>
+     * <li>"historical-date" - Convert using the rate on a historical date</li>
      * </ul>
      *
      * @param params The API request parameters
@@ -172,7 +176,7 @@ public class NeutrinoAPIClient {
      * @see <a href="https://www.neutrinoapi.com/api/domain-lookup">Documentation</a>
      */
     public APIResponse domainLookup(Map<String, String> params) {
-        return execRequest("GET", "domain-lookup", params, null, 120L);
+        return execRequest("GET", "domain-lookup", params, null, 300L);
     }
 
     /**
@@ -204,7 +208,7 @@ public class NeutrinoAPIClient {
      * @see <a href="https://www.neutrinoapi.com/api/email-verify">Documentation</a>
      */
     public APIResponse emailVerify(Map<String, String> params) {
-        return execRequest("GET", "email-verify", params, null, 120L);
+        return execRequest("GET", "email-verify", params, null, 300L);
     }
 
     /**
@@ -279,7 +283,7 @@ public class NeutrinoAPIClient {
      * @see <a href="https://www.neutrinoapi.com/api/host-reputation">Documentation</a>
      */
     public APIResponse hostReputation(Map<String, String> params) {
-        return execRequest("GET", "host-reputation", params, null, 120L);
+        return execRequest("GET", "host-reputation", params, null, 300L);
     }
 
     /**
@@ -357,7 +361,7 @@ public class NeutrinoAPIClient {
      * @see <a href="https://www.neutrinoapi.com/api/image-resize">Documentation</a>
      */
     public APIResponse imageResize(Map<String, String> params, Path outputFilePath) {
-        return execRequest("POST", "image-resize", params, outputFilePath, 20L);
+        return execRequest("POST", "image-resize", params, outputFilePath, 30L);
     }
 
     /**
@@ -381,7 +385,7 @@ public class NeutrinoAPIClient {
      * @see <a href="https://www.neutrinoapi.com/api/image-watermark">Documentation</a>
      */
     public APIResponse imageWatermark(Map<String, String> params, Path outputFilePath) {
-        return execRequest("POST", "image-watermark", params, outputFilePath, 20L);
+        return execRequest("POST", "image-watermark", params, outputFilePath, 30L);
     }
 
     /**
@@ -449,7 +453,7 @@ public class NeutrinoAPIClient {
      * @see <a href="https://www.neutrinoapi.com/api/ip-probe">Documentation</a>
      */
     public APIResponse ipProbe(Map<String, String> params) {
-        return execRequest("GET", "ip-probe", params, null, 120L);
+        return execRequest("GET", "ip-probe", params, null, 300L);
     }
 
     /**
@@ -527,7 +531,7 @@ public class NeutrinoAPIClient {
      * @see <a href="https://www.neutrinoapi.com/api/qr-code">Documentation</a>
      */
     public APIResponse qrCode(Map<String, String> params, Path outputFilePath) {
-        return execRequest("POST", "qr-code", params, outputFilePath, 20L);
+        return execRequest("POST", "qr-code", params, outputFilePath, 30L);
     }
 
     /**
